@@ -23,9 +23,10 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        $this->layout = 'login';
         if (($this->request->is('get') && !empty($this->request->data))) {
-            pr($this->request->data);
-            die;
+           /* pr($this->request->data);
+            die;*/
         }
 
         $this->set(compact('CLIENT_ID', 'REDIRECT_URL'));
