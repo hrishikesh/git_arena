@@ -30,5 +30,6 @@ class GitHubApiComponent extends Component{
 
         return $client;
 
+
     }
 }

@@ -20,43 +20,60 @@ class HtmlsController extends AppController {
 
     public function login_html() {
 
+        $branches = $this->GitHubApi
+            ->getGitHubClient()
+            ->api('repo')
+            ->branches()
+            ->all('hrishikesh',
+            'git_arena');
+
+        pr($branches);exit;
+
         $commits = $this->GitHubApi
             ->getGitHubClient()
             ->api('repo')
             ->commits()
-            ->all('hrishikesh', 'git_arena', array());
+            ->all('hrishikesh',
+            'git_arena',
+            array(
+                 'sha' => array(
+                     'master',
+                     'develop'
+                 )
+            ));
 
-        pr($commits);exit;
-//
-//         $commits = $this->GitHubApi->commitsInfo();
+        pr($commits);
+        exit;
+        //
+        //         $commits = $this->GitHubApi->commitsInfo();
 
-//        $this->getCommitsInfo($commits);
+        //        $this->getCommitsInfo($commits);
 
         $repos = $this->GitHubApi
-            ->getGitHubClient()->api('repo')->find('webonise', array('language' => ''));
+            ->getGitHubClient()
+            ->api('repo')
+            ->find('webonise', array('language' => ''));
         pr($repos);
         exit;
 
     }
 
-    public function getCommitsInfo($commits){
+    public function getCommitsInfo($commits) {
 
-//        pr($commits);
+        //        pr($commits);
 
-        foreach($commits as $key=>$commit){
-        $commitsInfo[$key]=array(
-            'id'=>$commit['committer']['id'],
-            'name'=>$commit['commit']['committer']['name'],
-            'message'=>$commit['commit']['message'],
-            'email'=>$commit['commit']['committer']['email'],
-            'date'=>$commit['commit']['committer']['date'],
-            'avatar_url'=>$commit['committer']['avatar_url'],
-            'gravatar_id'=>$commit['committer']['gravatar_id'],
+        foreach ($commits as $key => $commit) {
+            $commitsInfo[$key] = array(
+                'id'          => $commit['committer']['id'],
+                'name'        => $commit['commit']['committer']['name'],
+                'message'     => $commit['commit']['message'],
+                'email'       => $commit['commit']['committer']['email'],
+                'date'        => $commit['commit']['committer']['date'],
+                'avatar_url'  => $commit['committer']['avatar_url'],
+                'gravatar_id' => $commit['committer']['gravatar_id'],
 
-        );
+            );
         }
-
-
 
 
         pr($commitsInfo);
