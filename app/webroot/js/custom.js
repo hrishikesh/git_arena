@@ -22,4 +22,30 @@ $(document).ready(function(){
             opacity: 1
         },1000);
     },1000);
+
+    /* right side dropDown */
+
+    $('.dropDownList').hide();
+    $('.recentFeeds.openList').siblings('.dropDownList').show();
+    $('.recentFeeds').click(function(){
+        if(!($(this).hasClass('openList'))) {
+            $('.recentFeeds').removeClass('openList');
+            $(this).addClass('openList');
+            $('.dropDownList').slideUp('slow');
+            $(this).siblings('.dropDownList').slideDown('slow');
+        } else {
+           $(this).removeClass('openList');
+            $(this).siblings('.dropDownList').slideUp('slow');
+        }
+    });
+
+    /* tabing on feeds page */
+
+    $('.tabWrap li a').click(function(){
+        var currentHref = $(this).attr('href');
+        $('.tabWrap li a').removeClass('activeTab');
+        $(this).addClass('activeTab');
+        $('.tabContent').removeClass('show').addClass('hide');
+        $(currentHref).removeClass('hide').addClass('show');
+    });
 });
