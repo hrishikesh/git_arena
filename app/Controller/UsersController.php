@@ -7,9 +7,65 @@
 class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
+
+        $this->Auth->allow(array(
+                                'callback',
+                                'dashboard'
+                           ));
+    }
+
+    public function callback() {
+
     }
 
     public function login() {
+        if (($this->request->is('get') && !empty($this->request->data))) {
+            pr($this->request->data);
+            die;
+        }
+
+        $this->set(compact('CLIENT_ID', 'REDIRECT_URL'));
+
+
+    }
+
+    public function logout() {
+        $this->Session->destroy();
+        $this->redirect($this->Auth->logout());
+
+    }
+
+    public function dashboard() {
+        $url = 'https://github.com/login/oauth/access_token?';
+        //Temporary code
+        $code = isset($this->request->query['code']) ? $this->request->query['code'] : '';
+        /**
+         * @scenario
+         * @parameters
+         * =>Client Id
+         * =>client secret
+         * =>temporary code
+         */
+        $urlToGetAccessToken = $url . "client_id=" . $this->CLIENT_ID . "&client_secret=" . $this->CLIENT_SECRET . "&code=" . $code . "";
+
+        $curl_handle = curl_init(); // create a new cURL resource
+        // set URL and other appropriate options
+        curl_setopt($curl_handle, CURLOPT_URL, $urlToGetAccessToken);
+        curl_setopt($curl_handle, CURLOPT_HEADER, 0);
+
+        // grab URL and pass it to the browser
+        $accessToken = curl_exec($curl_handle);
+        curl_close($curl_handle);
+        /*get users information*/
+        $urlToGetLoginUserInfo = $this->URL . "user?access_token=" . $accessToken;
+        $curl_handle           = curl_init(); // create a new cURL resource
+        // set URL and other appropriate options
+        curl_setopt($curl_handle, CURLOPT_URL, $urlToGetLoginUserInfo);
+        curl_setopt($curl_handle, CURLOPT_HEADER, 0);
+
+        // grab URL and pass it to the browser
+        $userInfo = curl_exec($curl_handle);
+        curl_close($curl_handle);
 
     }
 }
