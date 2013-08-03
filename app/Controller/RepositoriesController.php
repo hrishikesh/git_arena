@@ -201,7 +201,7 @@ class RepositoriesController extends AppController {
 
         );
 
-        $this->set(compact('repos','commits'));
+        $this->set(compact('repos', 'commits'));
         //
         //        pr($repos);
         //        exit;
@@ -317,8 +317,6 @@ class RepositoriesController extends AppController {
             )
 
         );
-
-        //        pr($commits);
 
         $this->set(compact('commits'));
     }
