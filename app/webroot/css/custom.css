@@ -34,6 +34,13 @@ body,html {
     background: white;
     padding: 5px 30px;
 }
+.headerWrap h3 {
+    font-size: 40px;
+    float: left;
+    color: #333;
+    margin-left: 10px;
+    line-height: 73px;
+}
 .footerWrap {
     -moz-box-sizing: border-box;
     color: #333333;
@@ -51,6 +58,7 @@ body,html {
     padding: 0 20px;
 }
 .logoWrap {
+    float: left;
     width: 70px;
 }
 .logoWrap img {
