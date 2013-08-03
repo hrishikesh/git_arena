@@ -69,10 +69,11 @@ class AppController extends Controller {
         );
         $this->Auth->authError      = 'Invalid username or password.';
         $this->Auth->autoRedirect   = false;
-        $CLIENT_ID=$this->CLIENT_ID='340ed09a646a037c6b55';//dc513ade28e3fc36d43a-HR
-        $CLIENT_SECRET=$this->CLIENT_SECRET='41304bf57f2fce832703b33502b895f658af7031';//25d5fedbae2b95c5502f714aeaad12a9e9420615-HR
-        $REDIRECT_URL=$this->REDIRECT_URL='https://github.com/login/oauth/authorize?client_id=';
-        $URL=$this->URL='https://github.com/';
-        $this->set(compact('CLIENT_ID','CLIENT_SECRET','REDIRECT_URL','URL'));
+        $CLIENT_ID                  = $this->CLIENT_ID = '340ed09a646a037c6b55'; //dc513ade28e3fc36d43a-HR
+        $CLIENT_SECRET              = $this->CLIENT_SECRET = '41304bf57f2fce832703b33502b895f658af7031'; //25d5fedbae2b95c5502f714aeaad12a9e9420615-HR
+        $REDIRECT_URL               = $this->REDIRECT_URL = 'https://github.com/login/oauth/authorize?client_id=';
+        $URL                        = $this->URL = 'https://github.com/';
+        $authUser                   = $this->Auth->user();
+        $this->set(compact('CLIENT_ID', 'CLIENT_SECRET', 'REDIRECT_URL', 'URL','authUser'));
     }
 }
