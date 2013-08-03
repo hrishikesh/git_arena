@@ -46,8 +46,16 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="tabContent" id="tabGraph">
-                    <p>Graph comes here</p>
+                <div class="tabContent hide" id="tabGraph">
+                    <div class="teamBtnWrap clearfix">
+                        <div class="teamBtn active">Team 1</div>
+                        <div class="teamBtn">Team 2</div>
+                        <div class="teamBtn">Team 3</div>
+                        <div class="teamBtn">Team 4</div>
+                    </div>
+                    <div class="chartsWrap" id="detailChart">
+
+                    </div>
                 </div>
             </div>
         </div>
