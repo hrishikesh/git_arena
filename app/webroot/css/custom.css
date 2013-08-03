@@ -79,6 +79,8 @@ p,ul,ol, span {
 .dropDownTempWrap .accessTextWrap, .accessTextWrap {
     padding: 0 20px;
 }
+
+/* Login css */
 .logoWrap {
     display: block;
     float: left;
@@ -162,4 +164,48 @@ p,ul,ol, span {
     font-size: 14px;
 }
 
+/* dashboard css */
 
+.logOptionWrap {
+    float: right;
+    margin-top: 15px;
+}
+.userImage {
+    float: left;
+    max-width: 35px;
+    max-height: 35px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.userProfileWrap a {
+    display: block;
+}
+.userProfileWrap img {
+    width: 100%;
+}
+.loginOption {
+    float: left;
+    margin-left: 3px;
+    list-style: none;
+}
+.loginOption li {
+    float: left;
+    margin-left: 15px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.loginOption li:first-child {
+    margin-left: 0;
+}
+.loginOption li a {
+    color: #333333;
+}
+.iconLogout {
+    background: url("../img/System-Logout-icon_small.png") no-repeat;
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 2px;
+}

@@ -4,5 +4,17 @@
             <img src="/app/webroot/img/Logo_transparent.png" alt="logo image" />
         </a>
         <h3><a href="javascript: void(0)"><span>Git</span> Arena</a></h3>
+        <div class="logOptionWrap clearfix">
+            <ul class="loginOption clearfix">
+                <li>
+                    <a href="javascript: void(0)"><span><img class="userImage" src="/app/webroot/img/default-pic.png" alt="User Image" /></span>Profile</a>
+                    <ul class="dropDownBtn">
+                        <li>Change Password</li>
+                        <li>View Profile</li>
+                    </ul>
+                </li>
+                <li><a href="javascript: void(0)"><i class="iconLogout"></i>Sign out</a></li>
+            </ul>
+        </div>
     </div>
 </div>
