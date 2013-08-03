@@ -13,7 +13,7 @@ class GtestsController extends AppController {
     /**
      * @var array
      */
-    public $components = array('GitHubApi');
+   // public $components = array('GitHubApi');
 
     public function beforeRender() {
         parent::beforeRender();
@@ -26,7 +26,9 @@ class GtestsController extends AppController {
     }
 
     public function index(){
-        $gitHubClient =$this->GitHubApi->getGitHubClient();
-        pr($gitHubClient);
+        $gitHubClient = $this->GitHubApi->getGitHubClient();
+
+        pr($gitHubClient->api('current_user')->show());die;
+
     }
 }
