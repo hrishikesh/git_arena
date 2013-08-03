@@ -73,7 +73,7 @@ class UsersController extends AppController {
 
         $this->GitHubApi->getGitHubClient();
         $user = $this->GitHubApi->getUserInfo();
-
+//Save users data
         pr($user);die;
     }
 }
