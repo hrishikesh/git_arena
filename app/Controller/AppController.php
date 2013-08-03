@@ -49,6 +49,8 @@ class AppController extends Controller {
     public function beforeFilter() {
         parent::beforeFilter();
 
+        $this->layout = 'home';
+
         $this->Auth->authenticate   = array(
             AuthComponent::ALL => array(),
             'Form'
