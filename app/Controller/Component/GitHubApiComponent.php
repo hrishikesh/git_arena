@@ -39,7 +39,7 @@ class GitHubApiComponent extends Component{
         //$client->authenticate($this->_Controller->Session->read('git_hub_access.access_token'),'41304bf57f2fce832703b33502b895f658af7031');
         $this->_gitHubClient =  new Github\Client();
         $this->_gitHubClient->authenticate($this->_Controller->Session->read('git_hub_access.access_token'),$this->_clientId, 'url_token');
-        return $client;
+        //return $client;
     }
 
     public function getUserInfo() {
@@ -51,8 +51,27 @@ class GitHubApiComponent extends Component{
     }
 
 
-    public function getRepoContributors($org, $repoName, $includeNonGitHubUsers = false) {
-        return $this->_gitHubClient->api('repo')->contributors($org, $repoName, $includeNonGitHubUsers);
+    public function getRepoContributors($userName, $repoName, $includeNonGitHubUsers = false) {
+        return $this->_gitHubClient->api('repo')->contributors($userName, $repoName, $includeNonGitHubUsers);
+    }
+
+
+    public function getCommitsForRepo($userName, $repoName, $branch = 'master') {
+        return $this->_gitHubClient->api('repo')->commits()->all($userName, $repoName, array('sha' =>$branch));
+    }
+
+
+
+    public function getCommitsForAllRepos($userName) {
+        $repoList = $this->getRepoList();
+        $commits = array();
+        foreach($repoList as $repo) {
+            $repoCommits = $this->getCommitsForRepo($userName, $repo['name']);
+            foreach($repoCommits as $repoCommit) {
+                $commits[] = $repoCommit;
+            }
+        }
+        return $commits;
     }
 
 
