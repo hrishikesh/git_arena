@@ -7,6 +7,7 @@
 
 /**
  * @property GitHubApiComponent $GitHubApi
+ * @property User               $User
  */
 class UsersController extends AppController {
     public function beforeFilter() {
@@ -19,14 +20,15 @@ class UsersController extends AppController {
     }
 
     public function callback() {
-        echo 'here';die;
+        echo 'here';
+        die;
     }
 
     public function login() {
         $this->layout = 'login';
         if (($this->request->is('get') && !empty($this->request->data))) {
-           /* pr($this->request->data);
-            die;*/
+            /* pr($this->request->data);
+             die;*/
         }
 
         $this->set(compact('CLIENT_ID', 'REDIRECT_URL'));
@@ -41,8 +43,8 @@ class UsersController extends AppController {
     }
 
     public function dashboard() {
-        $this->autoRender=false;
-        $url = 'https://github.com/login/oauth/access_token?';
+        $this->autoRender = false;
+        $url              = 'https://github.com/login/oauth/access_token?';
         //Temporary code
         $code = isset($this->request->query['code']) ? $this->request->query['code'] : '';
 
@@ -62,19 +64,33 @@ class UsersController extends AppController {
         curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
 
         // grab URL and pass it to the browser
-        $accessToken = curl_exec($curl_handle);
-        $gitHubAccessInfoRaw = explode('&',$accessToken);
-        $gitHubAccessInfo = array();
-        foreach($gitHubAccessInfoRaw as $gitHubAccess) {
-            $accessTokenSlices = explode('=', $gitHubAccess);
+        $accessToken         = curl_exec($curl_handle);
+        $gitHubAccessInfoRaw = explode('&', $accessToken);
+        $gitHubAccessInfo    = array();
+        foreach ($gitHubAccessInfoRaw as $gitHubAccess) {
+            $accessTokenSlices                       = explode('=', $gitHubAccess);
             $gitHubAccessInfo[$accessTokenSlices[0]] = $accessTokenSlices[1];
         }
         curl_close($curl_handle);
-        $this->Session->write('git_hub_access',$gitHubAccessInfo);
+        $this->Session->write('git_hub_access', $gitHubAccessInfo);
 
         $this->GitHubApi->getGitHubClient();
         $user = $this->GitHubApi->getUserInfo();
-//Save users data
-        pr($user);die;
+        //Save users data
+        if ($this->User->checkAlreadyExists($user['id']) == 0) {
+            $userData = array(
+                'name'       => $user['login'],
+                'git_hub_id' => $user['id']
+            );
+            $this->User->create();
+            $this->User->save($userData);
+            $userInfo=$this->User->getUserData($this->User->getLastInsertID());
+            $this->Session->setFlash('User data saved successfully');
+        } else {
+            $userInfo = $this->User->findByGitHubId($user['id']);
+        }
+        if($this->Auth->login($userInfo['User'])) {
+            $this->redirect(array('controller'=>'htmls', 'action'=>'dashboard'));
+        };
     }
 }

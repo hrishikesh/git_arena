@@ -20,7 +20,7 @@ class CreateTableUsers extends CakeMigration {
             'create_table' => array(
                 'users' => array(
                     'id'              => array(
-                        'type'    => 'string',
+                        'type'    => 'integer',
                         'null'    => false,
                         'default' => null,
                         'length'  => 11,
@@ -32,11 +32,10 @@ class CreateTableUsers extends CakeMigration {
                         'default' => null
                     ),
                     'git_hub_id'      => array(
-                        'type'    => 'string',
+                        'type'    => 'integer',
                         'null'    => false,
                         'default' => null,
-                        'length'  => 11,
-                        'key'     => 'primary'
+                        'length'  => 11
                     ),
                     'created'         => array(
                         'type' => 'datetime'
