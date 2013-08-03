@@ -15,6 +15,7 @@ class HtmlsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login_html');
+        $this->layout = 'login';
     }
 
     public function login_html(){
