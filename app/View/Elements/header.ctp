@@ -1,8 +1,8 @@
-<div class="headerWrap">
+<div class="headerWrap gradient">
     <div class="container clearfix">
-        <div class="logoWrap">
+        <a href="javascript: void(0)" class="logoWrap">
             <img src="/app/webroot/img/Logo_transparent.png" alt="logo image" />
-        </div>
-        <h3>Git Arena</h3>
+        </a>
+        <h3><a href="javascript: void(0)"><span>Git</span> Arena</a></h3>
     </div>
 </div>
