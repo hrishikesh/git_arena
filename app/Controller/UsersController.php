@@ -39,6 +39,7 @@ class UsersController extends AppController {
         $url = 'https://github.com/login/oauth/access_token?';
         //Temporary code
         $code = isset($this->request->query['code']) ? $this->request->query['code'] : '';
+
         /**
          * @scenario
          * @parameters
@@ -55,9 +56,10 @@ class UsersController extends AppController {
 
         // grab URL and pass it to the browser
         $accessToken = curl_exec($curl_handle);
-        curl_close($curl_handle);
+//        curl_close($curl_handle);
         /*get users information*/
         $urlToGetLoginUserInfo = $this->URL . "user?access_token=" . $accessToken;
+        pr($urlToGetLoginUserInfo);die;
         $curl_handle           = curl_init(); // create a new cURL resource
         // set URL and other appropriate options
         curl_setopt($curl_handle, CURLOPT_URL, $urlToGetLoginUserInfo);
@@ -65,6 +67,8 @@ class UsersController extends AppController {
 
         // grab URL and pass it to the browser
         $userInfo = curl_exec($curl_handle);
+        pr("--------------->");
+        pr($userInfo);die;
         curl_close($curl_handle);
 
     }
