@@ -470,7 +470,8 @@ p,ul,ol, span {
     padding: 0 0 20px 0;
     height: 350px;
 }
-/*.highcharts-container tspan {
-    display: none;
-}*/
-
+pre,
+p.notice,
+p.error {
+    color: #efefef;
+}

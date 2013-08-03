@@ -36,6 +36,17 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+    <link rel="icon" href="/app/img/webroot/img/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/app/img/webroot/img/favicon.ico" type="image/x-icon"/>
+
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
+
 </head>
 <body>
 	<div id="container">

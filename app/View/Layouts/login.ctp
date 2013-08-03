@@ -25,7 +25,16 @@
     ));
     echo $this->fetch('script');
     ?>
+    <link rel="icon" href="app/img/webroot/img/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="app/img/webroot/img/favicon.ico" type="image/x-icon"/>
 
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
 
 </head>
 <body class="loginLowerBg">
