@@ -467,7 +467,10 @@ p,ul,ol, span {
 
 }
 .chartsWrap {
-    padding: 0 0 40px 0;
+    padding: 0 0 20px 0;
     height: 350px;
 }
+/*.highcharts-container tspan {
+    display: none;
+}*/
 
