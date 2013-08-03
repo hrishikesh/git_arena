@@ -4,6 +4,10 @@
  * User: Hrishikesh <hrishikesh@weboniselab.com>
  * Date: 3/8/13 3:25 PM
  */
+
+/**
+ * @property GitHubApiComponent $GitHubApi
+ */
 class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
@@ -15,7 +19,7 @@ class UsersController extends AppController {
     }
 
     public function callback() {
-
+        echo 'here';die;
     }
 
     public function login() {
@@ -36,6 +40,7 @@ class UsersController extends AppController {
     }
 
     public function dashboard() {
+        $this->autoRender=false;
         $url = 'https://github.com/login/oauth/access_token?';
         //Temporary code
         $code = isset($this->request->query['code']) ? $this->request->query['code'] : '';
@@ -53,23 +58,22 @@ class UsersController extends AppController {
         // set URL and other appropriate options
         curl_setopt($curl_handle, CURLOPT_URL, $urlToGetAccessToken);
         curl_setopt($curl_handle, CURLOPT_HEADER, 0);
+        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
 
         // grab URL and pass it to the browser
         $accessToken = curl_exec($curl_handle);
-//        curl_close($curl_handle);
-        /*get users information*/
-        $urlToGetLoginUserInfo = $this->URL . "user?access_token=" . $accessToken;
-        pr($urlToGetLoginUserInfo);die;
-        $curl_handle           = curl_init(); // create a new cURL resource
-        // set URL and other appropriate options
-        curl_setopt($curl_handle, CURLOPT_URL, $urlToGetLoginUserInfo);
-        curl_setopt($curl_handle, CURLOPT_HEADER, 0);
-
-        // grab URL and pass it to the browser
-        $userInfo = curl_exec($curl_handle);
-        pr("--------------->");
-        pr($userInfo);die;
+        $gitHubAccessInfoRaw = explode('&',$accessToken);
+        $gitHubAccessInfo = array();
+        foreach($gitHubAccessInfoRaw as $gitHubAccess) {
+            $accessTokenSlices = explode('=', $gitHubAccess);
+            $gitHubAccessInfo[$accessTokenSlices[0]] = $accessTokenSlices[1];
+        }
         curl_close($curl_handle);
+        $this->Session->write('git_hub_access',$gitHubAccessInfo);
 
+        $this->GitHubApi->getGitHubClient();
+        $user = $this->GitHubApi->getUserInfo();
+
+        pr($user);die;
     }
 }

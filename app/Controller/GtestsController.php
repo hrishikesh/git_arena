@@ -13,7 +13,7 @@ class GtestsController extends AppController {
     /**
      * @var array
      */
-    public $components = array('GitHubApi');
+   // public $components = array('GitHubApi');
 
     public function beforeRender() {
         parent::beforeRender();
