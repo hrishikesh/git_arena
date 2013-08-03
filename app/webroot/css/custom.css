@@ -1,0 +1,55 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body,html {
+    background: url("../img/loging_lowerBg.jpg") repeat;
+    min-height: 100%;
+    font-family: 'helvaitca', sans-serif, arial;
+    font-weight: normal;
+    color: white;
+}
+
+.headerWrap {
+    border-bottom: 1px solid #cdcdcd;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    background: white;
+    padding: 20px;
+}
+.footerWrap {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #ffffff 0%, #e7e7e7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #e7e7e7));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #e7e7e7 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #e7e7e7 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #e7e7e7 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #e7e7e7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#e7e7e7', GradientType = 0);
+}
+.dropDownTempWrap .accessTextWrap, .accessTextWrap {
+    padding: 0 20px;
+}
