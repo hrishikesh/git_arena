@@ -21,7 +21,9 @@
     echo $this->Html->script(array(
         'jquery-1.8.3',
         'jquery-ui',
-        'custom'
+        'custom',
+        'highCharts/highcharts-more',
+        'highCharts/highstock'
     ));
     echo $this->fetch('script');
     ?>
