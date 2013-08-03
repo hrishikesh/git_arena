@@ -14,11 +14,16 @@ class HtmlsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login_html');
-        $this->layout = 'login';
+        $this->Auth->allow('login_html','dashboard');
+        if($this->params['action'] == 'login_html'){
+            $this->layout = 'login';
+        }
+            $this->layout = 'home';
     }
 
     public function login_html(){
 
+    }
+    public function dashboard(){
     }
 }

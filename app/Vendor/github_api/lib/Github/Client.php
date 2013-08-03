@@ -55,7 +55,9 @@ class Client
         'api_limit'   => 5000,
         'api_version' => 'beta',
 
-        'cache_dir'   => null
+        'cache_dir'   => null,
+        /*'client_id' => 'dc513ade28e3fc36d43a',
+        'client_secret'=> '25d5fedbae2b95c5502f714aeaad12a9e9420615'*/
     );
 
     /**

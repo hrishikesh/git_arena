@@ -14,12 +14,12 @@
     <title>Git Arena | Login</title>
     <?php
     //echo $this->Html->meta('icon');//remove the comment whenever you add the favicon to the application
-    echo $this->Html->css(array('bootstrap','bootstrap-responsive', 'jquery-ui', 'custom'));
+    echo $this->Html->css(array('bootstrap', 'jquery-ui', 'custom'));
     echo $this->fetch('meta');
     echo $this->fetch('css');
 
     echo $this->Html->script(array(
-        'jquery-1.8.3.min',
+        'jquery-1.8.3',
         'jquery-ui',
         'custom'
     ));
@@ -32,23 +32,23 @@
     <?php
         echo $this->element('header');
     ?>
-<div class="loginBody">
-    <section>
+<div class="loginBody clearfix">
+    <section class="container">
         <div id="TTSbarbutton"></div>
-    <?php if ($this->Session->check('Message.flash')) { ?>
-        <div class="container">
+        <?php if ($this->Session->check('Message.flash')) { ?>
+            <div class="container">
 
+                <?php
+                if ($this->Session->check('Message.flash')) {
+                    echo $this->Session->flash();
+                }
+                ?>
+
+            </div>
             <?php
-            if ($this->Session->check('Message.flash')) {
-                echo $this->Session->flash();
-            }
+        }
+            echo $this->fetch('content');
             ?>
-
-        </div>
-        <?php
-    }
-        echo $this->fetch('content');
-        ?>
 
     </section>
 </div>
