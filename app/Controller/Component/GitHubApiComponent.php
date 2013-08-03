@@ -26,8 +26,6 @@ class GitHubApiComponent extends Component{
          * @var Github\Client
          */
         $client = new Github\Client();
-        //$repositories = $client->api('user')->repositories('ornicar');
-
         return $client;
 
 
