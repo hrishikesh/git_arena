@@ -1,3 +1,5 @@
 <div class="headerWrap">
-        <img src="/app/webroot/img/Logo.png" alt="logo image" />
+    <div class="logoWrap">
+        <img src="/app/webroot/img/Logo_transparent.png" alt="logo image" />
+    </div>
 </div>
