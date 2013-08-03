@@ -18,97 +18,33 @@
             </div>
             <div class="lowerTabContent">
                 <div class="tabContent" id="tabTable">
-                    <ul class="commitsWrap">
-                        <li class="clearfix">
-                            <div class="commitUser">
-                                <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
-                            </div>
-                            <div class="commitsDetails">
-                                <p><span>Anamika</span> has commited the code on branch <span>Develop</span></p>
-
-                                <div class="currentCommits">
-                                    <span>Commit: </span>"login functionality implemented"
+                    <div id="activityList">
+                        <?php if (!empty($commits)) { ?>
+                        <ul class="commitsWrap">
+                            <?php foreach ($commits as $commit) { ?>
+                            <li class="clearfix">
+                                <div class="commitUser">
+                                    <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
                                 </div>
-                            </div>
-                            <div class="dateTimeWrap">
-                                <p>26-08-2013</p>
+                                <div class="commitsDetails">
+                                    <p><span><?php echo $commit['commit']['committer']['name'];?></span> has commited
+                                        the code on branch <span>Develop</span>
+                                    </p>
 
-                                <p>09:30 am</p>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="commitUser">
-                                <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
-                            </div>
-                            <div class="commitsDetails">
-                                <p><span>Anamika</span> has commited the code on branch <span>Develop</span></p>
-
-                                <div class="currentCommits">
-                                    <span>Commit: </span>"login functionality implemented"
+                                    <div class="currentCommits">
+                                        <span>Commit: </span>"<?php echo $commit['commit']['message'];?>"
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="dateTimeWrap">
-                                <p>26-08-2013</p>
+                                <div class="dateTimeWrap">
+                                    <p>26-08-2013</p>
 
-                                <p>09:30 am</p>
-                            </div>
-
-                        </li>
-                        <li class="clearfix">
-                            <div class="commitUser">
-                                <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
-                            </div>
-                            <div class="commitsDetails">
-                                <p><span>Anamika</span> has commited the code on branch <span>Develop</span></p>
-
-                                <div class="currentCommits">
-                                    <span>Commit: </span>"login functionality implemented"
+                                    <p>09:30 am</p>
                                 </div>
-                            </div>
-                            <div class="dateTimeWrap">
-                                <p>26-08-2013</p>
-
-                                <p>09:30 am</p>
-                            </div>
-
-                        </li>
-                        <li class="clearfix">
-                            <div class="commitUser">
-                                <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
-                            </div>
-                            <div class="commitsDetails">
-                                <p><span>Anamika</span> has commited the code on branch <span>Develop</span></p>
-
-                                <div class="currentCommits">
-                                    <span>Commit: </span>"login functionality implemented"
-                                </div>
-                            </div>
-                            <div class="dateTimeWrap">
-                                <p>26-08-2013</p>
-
-                                <p>09:30 am</p>
-                            </div>
-
-                        </li>
-                        <li class="clearfix">
-                            <div class="commitUser">
-                                <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
-                            </div>
-                            <div class="commitsDetails">
-                                <p><span>Anamika</span> has commited the code on branch <span>Develop</span></p>
-
-                                <div class="currentCommits">
-                                    <span>Commit: </span>"login functionality implemented"
-                                </div>
-                            </div>
-                            <div class="dateTimeWrap">
-                                <p>26-08-2013</p>
-
-                                <p>09:30 am</p>
-                            </div>
-
-                        </li>
-                    </ul>
+                            </li>
+                            <?php }?>
+                        </ul>
+                        <?php } ?>
+                    </div>
                 </div>
                 <div class="tabContent" id="tabGraph">
                     <p>Graph comes here</p>
@@ -117,43 +53,7 @@
         </div>
         <div class="feedsWrap">
             <h3>See Recent Activities</h3>
-
-            <div class="activeFeeds">
-                <div class="listMainWrap">
-                    <?php
-                    if (!empty($repos['repositories'])) {
-                        ?>
-                        <ul>
-                            <?php foreach ($repos['repositories'] as $key => $repo) {
-                            $class = '';
-                            if ($key == 0) {
-                                $class = 'openList';
-                            }
-                            ?>
-                            <li>
-                                <div class="recentFeeds clearfix <?php echo $class;?>"
-                                     data-name="<?php echo $repo['name'];?>">
-                                    <p><?php echo $repo['name'];?></p>
-                                    <i class="iconRepresent"></i>
-                                </div>
-                                <ul class="dropDownList">
-                                    <li>Anamika Verma</li>
-                                    <li>Vijay Kumbhkar</li>
-                                    <li>Vikas Singh</li>
-                                    <li>Harshal Shinde</li>
-                                    <li>Hrishikesh Ravekar</li>
-                                    <li>Pankaj Khernar</li>
-                                    <li>Pavan Avinash</li>
-                                </ul>
-                            </li>
-                            <?php }?>
-                        </ul>
-                        <?php
-
-                    }
-                    ?>
-                </div>
-            </div>
+            <?php echo $this->element('repository_list');?>
         </div>
     </div>
 </div>
@@ -171,7 +71,7 @@
                 type:'get',
                 data:{repoName:repoName},
                 success:function (data, status) {
-                    $('#responseList').html(data);
+                    $('#activityList').html(data);
                 },
                 error:function (xhr, desc, err) {
 //                        console.log(xhr);
