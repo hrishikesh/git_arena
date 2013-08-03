@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 /**
  * @property GitHubApiComponent $GitHubApi
  */
-class TestsController extends AppController {
+class GtestsController extends AppController {
 
     /**
      * @var array
@@ -21,7 +21,7 @@ class TestsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('*');
+        $this->Auth->allow('index');
         $this->layout = 'login';
     }
 

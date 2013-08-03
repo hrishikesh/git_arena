@@ -4,7 +4,7 @@
  * User: Hrishikesh <hrishikesh@weboniselab.com>
  * Date: 3/8/13 3:59 PM
  */
-App::import('Vendor', 'vendor/autoload.php');
+App::import('Vendor', 'github_api/vendor/autoload');
 class GitHubApiComponent extends Component{
 
     /**
@@ -26,8 +26,6 @@ class GitHubApiComponent extends Component{
          * @var Github\Client
          */
         $client = new Github\Client();
-        //$repositories = $client->api('user')->repositories('ornicar');
-
         return $client;
 
     }
