@@ -14,23 +14,14 @@ class HtmlsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login_html','dashboard');
-        if($this->params['action'] == 'login_html'){
+        $this->Auth->allow('login_html', 'dashboard');
+        if ($this->params['action'] == 'login_html') {
             $this->layout = 'login';
         }
-            $this->layout = 'home';
+        $this->layout = 'home';
     }
 
     public function login_html() {
-
-        $branches = $this->GitHubApi
-            ->getGitHubClient()
-            ->api('repo')
-            ->branches()
-            ->all('hrishikesh',
-            'git_arena');
-
-        pr($branches);exit;
 
         $commits = $this->GitHubApi
             ->getGitHubClient()
@@ -83,6 +74,7 @@ class HtmlsController extends AppController {
         exit;
 
     }
-    public function dashboard(){
+
+    public function dashboard() {
     }
 }

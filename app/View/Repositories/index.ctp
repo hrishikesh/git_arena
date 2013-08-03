@@ -125,9 +125,14 @@
                         ?>
                         <ul>
                             <?php foreach ($repos['repositories'] as $key => $repo) {
+                            $class = '';
+                            if ($key == 0) {
+                                $class = 'openList';
+                            }
                             ?>
                             <li>
-                                <div class="recentFeeds clearfix openList" data-name="<?php echo $repo['name'];?>">
+                                <div class="recentFeeds clearfix <?php echo $class;?>"
+                                     data-name="<?php echo $repo['name'];?>">
                                     <p><?php echo $repo['name'];?></p>
                                     <i class="iconRepresent"></i>
                                 </div>
