@@ -1,7 +1,7 @@
 /app/Config/database.php
 /app/Config/core.php
 /app/tmp/logs
-/app/tmp/
+/app/tmp/*
 .idea/
 
 
