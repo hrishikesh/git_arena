@@ -18,7 +18,49 @@ class HtmlsController extends AppController {
         $this->layout = 'login';
     }
 
-    public function login_html(){
+    public function login_html() {
+
+        $commits = $this->GitHubApi
+            ->getGitHubClient()
+            ->api('repo')
+            ->commits()
+            ->all('hrishikesh', 'git_arena', array());
+
+        pr($commits);exit;
+//
+//         $commits = $this->GitHubApi->commitsInfo();
+
+//        $this->getCommitsInfo($commits);
+
+        $repos = $this->GitHubApi
+            ->getGitHubClient()->api('repo')->find('webonise', array('language' => ''));
+        pr($repos);
+        exit;
+
+    }
+
+    public function getCommitsInfo($commits){
+
+//        pr($commits);
+
+        foreach($commits as $key=>$commit){
+        $commitsInfo[$key]=array(
+            'id'=>$commit['committer']['id'],
+            'name'=>$commit['commit']['committer']['name'],
+            'message'=>$commit['commit']['message'],
+            'email'=>$commit['commit']['committer']['email'],
+            'date'=>$commit['commit']['committer']['date'],
+            'avatar_url'=>$commit['committer']['avatar_url'],
+            'gravatar_id'=>$commit['committer']['gravatar_id'],
+
+        );
+        }
+
+
+
+
+        pr($commitsInfo);
+        exit;
 
     }
 }
