@@ -26,7 +26,9 @@ class GtestsController extends AppController {
     }
 
     public function index(){
-        $gitHubClient =$this->GitHubApi->getGitHubClient();
-        pr($gitHubClient);
+        $gitHubClient = $this->GitHubApi->getGitHubClient();
+
+        pr($gitHubClient->api('current_user')->show());die;
+
     }
 }
