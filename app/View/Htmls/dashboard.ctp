@@ -10,8 +10,8 @@
             </div>
             <div class="tabWrap">
                 <ul class="clearfix">
-                    <li><a href="javascript: void(0)" class="activeTab">Activity Feeds</a></li>
-                    <li><a href="javascript: void(0)">Graph Representation</a></li>
+                    <li><a href="#tabTable" class="activeTab">Activity Feeds</a></li>
+                    <li><a href="#tabGraph">Graph Representation</a></li>
                 </ul>
             </div>
             <div class="lowerTabContent">
@@ -42,6 +42,11 @@
                                     <span>Commit: </span>"login functionality implemented"
                                 </div>
                             </div>
+                            <div class="dateTimeWrap">
+                                <p>26-08-2013</p>
+                                <p>09:30 am</p>
+                            </div>
+
                         </li>
                         <li class="clearfix">
                             <div class="commitUser">
@@ -53,6 +58,11 @@
                                     <span>Commit: </span>"login functionality implemented"
                                 </div>
                             </div>
+                            <div class="dateTimeWrap">
+                                <p>26-08-2013</p>
+                                <p>09:30 am</p>
+                            </div>
+
                         </li>
                         <li class="clearfix">
                             <div class="commitUser">
@@ -64,6 +74,11 @@
                                     <span>Commit: </span>"login functionality implemented"
                                 </div>
                             </div>
+                            <div class="dateTimeWrap">
+                                <p>26-08-2013</p>
+                                <p>09:30 am</p>
+                            </div>
+
                         </li>
                         <li class="clearfix">
                             <div class="commitUser">
@@ -75,11 +90,16 @@
                                     <span>Commit: </span>"login functionality implemented"
                                 </div>
                             </div>
+                            <div class="dateTimeWrap">
+                                <p>26-08-2013</p>
+                                <p>09:30 am</p>
+                            </div>
+
                         </li>
                     </ul>
                 </div>
                 <div class="tabContent" id="tabGraph">
-                      here graph comes
+                      <p>Graph comes here</p>
                 </div>
             </div>
         </div>

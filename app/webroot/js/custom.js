@@ -42,10 +42,10 @@ $(document).ready(function(){
     /* tabing on feeds page */
 
     $('.tabWrap li a').click(function(){
+        var currentHref = $(this).attr('href');
         $('.tabWrap li a').removeClass('activeTab');
         $(this).addClass('activeTab');
-        var currentHref = $(this).attr('href');
         $('.tabContent').removeClass('show').addClass('hide');
-        $('currentHref').removeClass('hide').addClass('show');
+        $(currentHref).removeClass('hide').addClass('show');
     });
 });

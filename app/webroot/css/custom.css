@@ -215,7 +215,7 @@ p,ul,ol, span {
     border: 1px solid #eeeeee;
     box-shadow: 0 0px 5px 0 #eeeeee;
     background: white;
-    padding-bottom: 30px;
+    /*padding-bottom: 30px;*/
 }
 .dashboardUserWrap {
     margin-left: 20px;
