@@ -7,11 +7,7 @@
         <div class="logOptionWrap clearfix">
             <ul class="loginOption clearfix">
                 <li>
-                    <a href="javascript: void(0)"><span><img class="userImage" src="/app/webroot/img/default-pic.png" alt="User Image" /></span>Profile</a>
-                    <ul class="dropDownBtn">
-                        <li>Change Password</li>
-                        <li>View Profile</li>
-                    </ul>
+                    <a href="javascript: void(0)" class="profileView"><span><img class="userImage" src="/app/webroot/img/default-pic.png" alt="User Image" /></span>Profile</a>
                 </li>
                 <li><a href="javascript: void(0)"><i class="iconLogout"></i>Sign out</a></li>
             </ul>
