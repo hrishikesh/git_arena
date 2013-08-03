@@ -2,12 +2,14 @@
     <div class="row upperContent">
         <div class="span8">
             <div class="dashboardUserWrap clearfix">
-                <img src="/app/webroot/img/default-pic.png" alt="User Pictures">
+                <div class="userMainIcon">
+                    <img src="<?php echo $avatarUrl; ?>" alt="User Pictures">
+                </div>
 
                 <div class="userInformation">
-                    <p>Name</p>
+                    <p><?php echo $userName;?></p>
 
-                    <p>Email id</p>
+                    <!--<p>Email id</p>-->
                 </div>
             </div>
             <div class="tabWrap">
@@ -24,11 +26,11 @@
                             <?php foreach ($commits as $commit) { ?>
                             <li class="clearfix">
                                 <div class="commitUser">
-                                    <img src="/app/webroot/img/default-pic.png" alt="user default pic"/>
+                                    <img src="<?php echo $commit['committer']['avatar_url']?>" alt="user default pic"/>
                                 </div>
                                 <div class="commitsDetails">
                                     <p><span><?php echo $commit['commit']['committer']['name'];?></span> has commited
-                                        the code on branch <span>Develop</span>
+                                        the code on branch <span>Master</span>
                                     </p>
 
                                     <div class="currentCommits">
@@ -36,9 +38,13 @@
                                     </div>
                                 </div>
                                 <div class="dateTimeWrap">
-                                    <p>26-08-2013</p>
+                                    <?php $date = date('d-m-Y = H:i A',
+                                    strtotime($commit['commit']['committer']['date']));
+                                    $arrDate    = explode('=', $date);
+                                    ?>
+                                    <p><?php echo $arrDate[0];?></p>
 
-                                    <p>09:30 am</p>
+                                    <p><?php echo $arrDate[1];?></p>
                                 </div>
                             </li>
                             <?php }?>
@@ -48,10 +54,13 @@
                 </div>
                 <div class="tabContent hide" id="tabGraph">
                     <div class="teamBtnWrap clearfix">
-                        <div class="teamBtn active">Team 1</div>
-                        <div class="teamBtn">Team 2</div>
-                        <div class="teamBtn">Team 3</div>
-                        <div class="teamBtn">Team 4</div>
+                        <?php if (!empty($repos)) {
+                        foreach ($repos as $key => $repo) {
+                            ?>
+                            <div class="teamBtn active"><?php echo $repo['name'];?></div>
+                            <?php
+                        }
+                    }?>
                     </div>
                     <div class="chartsWrap" id="detailChart">
 
@@ -70,23 +79,32 @@
 
     $(document).ready(function () {
 
-        //on change of no.of responses chosen
         $('.recentFeeds').click(function () {
-            var repoName = $(this).attr('data-name');
+            var repoName = $(this).attr('repo-name');
+            var ownerName = $(this).attr('owner-name');
             $.ajax({
 
                 url:'<?php echo FULL_BASE_URL;?>/repositories/activity_feeds',
                 type:'get',
-                data:{repoName:repoName},
+                data:{repoName:repoName, ownerName:ownerName},
                 success:function (data, status) {
                     $('#activityList').html(data);
                 },
                 error:function (xhr, desc, err) {
-//                        console.log(xhr);
-//                        console.log("Desc: " + desc + "\nErr:" + err);
                 }
             });
 
+            $.ajax({
+
+                url:'<?php echo FULL_BASE_URL;?>/repositories/contributors_list',
+                type:'get',
+                data:{repoName:repoName, ownerName:ownerName},
+                success:function (data, status) {
+                    $('#drop_'+repoName).html(data);
+                },
+                error:function (xhr, desc, err) {
+                }
+            });
         });
 
     });

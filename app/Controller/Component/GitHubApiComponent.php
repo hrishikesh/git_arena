@@ -26,6 +26,8 @@ class GitHubApiComponent extends Component{
      */
     public function initialize(Controller $controller) {
         $this->_Controller = $controller;
+        $this->_gitHubClient =  new Github\Client();
+        $this->_gitHubClient->authenticate($this->_Controller->Session->read('git_hub_access.access_token'),$this->_clientId, 'url_token');
     }
 
     public function getGitHubClient(){

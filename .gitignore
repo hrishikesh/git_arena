@@ -1,4 +1,4 @@
-/app/Config/database.php
+    /app/Config/database.php
 /app/Config/core.php
 /app/tmp/logs
 /app/tmp/*
