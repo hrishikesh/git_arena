@@ -160,7 +160,6 @@
         //on change of no.of responses chosen
         $('.recentFeeds').click(function () {
             var repoName = $(this).attr('data-name');
-            alert(repoName);
             $.ajax({
 
                 url:'<?php echo FULL_BASE_URL;?>/repositories/activity_feeds',
